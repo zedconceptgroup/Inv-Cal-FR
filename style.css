@@ -1,0 +1,100 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2820
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 * \{\
+    margin: 0;\
+    padding: 0;\
+    box-sizing: border-box;\
+    font-family: Arial, sans-serif;\
+\}\
+\
+body \{\
+    background-color: #f4f4f4;\
+    display: flex;\
+    justify-content: center;\
+    align-items: center;\
+    height: 100vh;\
+\}\
+\
+.container \{\
+    width: 90%;\
+    max-width: 400px;\
+    background: #fff;\
+    padding: 20px;\
+    border-radius: 10px;\
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);\
+    text-align: center;\
+\}\
+\
+h1 \{\
+    font-size: 22px;\
+    margin-bottom: 15px;\
+\}\
+\
+label \{\
+    font-weight: bold;\
+    display: block;\
+    margin: 10px 0;\
+\}\
+\
+input \{\
+    width: 100%;\
+    padding: 10px;\
+    margin-bottom: 10px;\
+    border: 1px solid #ccc;\
+    border-radius: 5px;\
+\}\
+\
+button \{\
+    width: 100%;\
+    padding: 10px;\
+    background: #28a745;\
+    color: white;\
+    border: none;\
+    border-radius: 5px;\
+    font-size: 16px;\
+    cursor: pointer;\
+\}\
+\
+button:hover \{\
+    background: #218838;\
+\}\
+\
+#results \{\
+    margin-top: 15px;\
+    text-align: left;\
+\}\
+\
+p \{\
+    font-size: 16px;\
+    margin: 5px 0;\
+\}\
+\
+span \{\
+    color: #28a745;\
+    font-weight: bold;\
+\}\
+\
+@media (max-width: 600px) \{\
+    .container \{\
+        width: 95%;\
+        padding: 15px;\
+    \}\
+\
+    h1 \{\
+        font-size: 18px;\
+    \}\
+\
+    button \{\
+        font-size: 14px;\
+    \}\
+\
+    p \{\
+        font-size: 14px;\
+    \}\
+\}\
+}
