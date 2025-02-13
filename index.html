@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur d'Investissement</title>
+    <title>Calculateur de Paiements</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <div class="container">
-        <h1>📊 Simulateur d'Investissement</h1>
+        <h2>📊 Calculez vos Gains</h2>
+        <label for="investment">💶 Montant investi (€) :</label>
+        <input type="number" id="investment" placeholder="Entrez le montant">
 
-        <label for="investment">Montant investi (€) :</label>
-        <input type="number" id="investment" placeholder="Ex: 10000">
+        <button onclick="calculate()">📈 Calculer</button>
 
-        <button onclick="calculate()">Calculer</button>
-
-        <div id="results">
-            <h2>📈 Résultats :</h2>
-            <p><strong>Paiement Mensuel :</strong> <span id="monthly-payout">-</span> €</p>
-            <p><strong>Paiement Annuel :</strong> <span id="yearly-payout">-</span> €</p>
-            <p><strong>ROI Annuel :</strong> <span id="roi">-</span> %</p>
-        </div>
+        <h3>🔹 **Résultats** :</h3>
+        <p><strong>Paiement mensuel estimé :</strong> <span id="monthly-payout">-</span> €</p>
+        <p><strong>Paiement annuel estimé :</strong> <span id="annual-payout">-</span> €</p>
+        <p><strong>ROI Annuel :</strong> <span id="roi">-</span> %</p>
     </div>
 
-    <script src="script.js"></script>
+    <script src="calculateur.js"></script>
 </body>
 </html>
