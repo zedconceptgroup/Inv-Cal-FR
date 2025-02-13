@@ -1,33 +1,26 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur d'Investissement</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Investment Returns Calculator</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to CSS -->
 </head>
 <body>
+
     <div class="container">
-        <h2>📊 Calculez vos Gains</h2>
-        <label for="investment">💶 Montant investi (€) :</label>
-        <input type="number" id="investment" placeholder="Entrez le montant">
-
-        <button onclick="calculate()">📈 Calculer</button>
-
-        <h3>🔹 **Résultats** :</h3>
-        <p><strong>Paiement mensuel estimé :</strong> <span id="monthly-payout">-</span> €</p>
-        <p><strong>Paiement annuel estimé :</strong> <span id="annual-payout">-</span> €</p>
-        <p><strong>ROI Annuel :</strong> <span id="roi">-</span> %</p>
-
-        <h2>🔄 **Simulateur de Réinvestissement**</h2>
-        <label for="years">📅 Nombre d'années :</label>
-        <input type="number" id="years" placeholder="Entrez le nombre d'années">
-        <button onclick="simulateReinvestment()">🔄 Simuler</button>
-
-        <h3>🔹 **Capital après réinvestissement** :</h3>
-        <p><strong>Montant total investi :</strong> <span id="reinvested-amount">-</span> €</p>
+        <h2>Investment Returns Calculator</h2>
+        <p>Enter your investment amount (€5,000 - No Limit):</p>
+        <input type="number" id="investmentAmount" min="5000" step="1000" value="10000">
+        <button onclick="calculateReturns()">Calculate</button>
+        
+        <div class="result">
+            <p>💰 <strong>Monthly Payout:</strong> <span id="monthlyPayout">-</span></p>
+            <p>📅 <strong>Yearly Payout:</strong> <span id="yearlyPayout">-</span></p>
+            <p>📈 <strong>Annual ROI:</strong> <span id="roi">-</span>%</p>
+        </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js"></script> <!-- Link to JavaScript -->
 </body>
 </html>
