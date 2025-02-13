@@ -1,33 +1,33 @@
-function calculateReturns() {
-    let investment = parseFloat(document.getElementById("investmentAmount").value);
-    let roi, minMonthly, maxMonthly, minYearly, maxYearly;
+function calculate() {
+    let investment = parseFloat(document.getElementById("investment").value);
+    let monthlyPayout, yearlyPayout, roi;
 
-    if (investment < 5000) {
-        alert("Please enter an amount of at least €5,000.");
+    if (investment >= 5000 && investment < 10000) {
+        monthlyPayout = investment * 0.036;  // 3.6% per month
+        yearlyPayout = monthlyPayout * 12;
+        roi = (yearlyPayout / investment) * 100;
+    } else if (investment >= 10000 && investment < 25000) {
+        monthlyPayout = investment * 0.04;  // 4% per month
+        yearlyPayout = monthlyPayout * 12;
+        roi = (yearlyPayout / investment) * 100;
+    } else if (investment >= 25000 && investment < 50000) {
+        monthlyPayout = investment * 0.048; // 4.8% per month
+        yearlyPayout = monthlyPayout * 12;
+        roi = (yearlyPayout / investment) * 100;
+    } else if (investment >= 50000 && investment < 100000) {
+        monthlyPayout = investment * 0.055; // 5.5% per month
+        yearlyPayout = monthlyPayout * 12;
+        roi = (yearlyPayout / investment) * 100;
+    } else if (investment >= 100000) {
+        monthlyPayout = investment * 0.06;  // 6% per month
+        yearlyPayout = monthlyPayout * 12;
+        roi = (yearlyPayout / investment) * 100;
+    } else {
+        alert("Veuillez entrer un montant valide (minimum 5000€)");
         return;
     }
 
-    // Define ROI percentage based on investment tiers
-    if (investment < 10000) {
-        roi = 43; 
-    } else if (investment < 25000) {
-        roi = 48; 
-    } else if (investment < 50000) {
-        roi = 50; 
-    } else if (investment < 100000) {
-        roi = 53; 
-    } else {
-        roi = 58;  // Investments above €100,000 get the highest ROI
-    }
-
-    // Calculate estimated payouts
-    minYearly = (roi / 100) * investment;
-    maxYearly = ((roi + 10) / 100) * investment;
-    minMonthly = minYearly / 12;
-    maxMonthly = maxYearly / 12;
-
-    // Display results
-    document.getElementById("monthlyPayout").textContent = `€${minMonthly.toFixed(0)} - €${maxMonthly.toFixed(0)}`;
-    document.getElementById("yearlyPayout").textContent = `€${minYearly.toFixed(0)} - €${maxYearly.toFixed(0)}`;
-    document.getElementById("roi").textContent = `${roi} - ${roi + 10}`;
+    document.getElementById("monthlyPayout").innerText = monthlyPayout.toFixed(2);
+    document.getElementById("yearlyPayout").innerText = yearlyPayout.toFixed(2);
+    document.getElementById("roi").innerText = roi.toFixed(2);
 }
