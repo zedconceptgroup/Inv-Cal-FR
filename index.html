@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur de Paiements</title>
+    <title>Calculateur d'Investissement</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,8 +18,16 @@
         <p><strong>Paiement mensuel estimé :</strong> <span id="monthly-payout">-</span> €</p>
         <p><strong>Paiement annuel estimé :</strong> <span id="annual-payout">-</span> €</p>
         <p><strong>ROI Annuel :</strong> <span id="roi">-</span> %</p>
+
+        <h2>🔄 **Simulateur de Réinvestissement**</h2>
+        <label for="years">📅 Nombre d'années :</label>
+        <input type="number" id="years" placeholder="Entrez le nombre d'années">
+        <button onclick="simulateReinvestment()">🔄 Simuler</button>
+
+        <h3>🔹 **Capital après réinvestissement** :</h3>
+        <p><strong>Montant total investi :</strong> <span id="reinvested-amount">-</span> €</p>
     </div>
 
-    <script src="calculateur.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
