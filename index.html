@@ -4,85 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulateur d'Investissement</title>
-    <script defer src="script.js"></script>
+    <script src="script.js" defer></script>
     <style>
-    .highlight {
-        font-weight: bold;
-        color: #28a745; /* Green */
-        font-size: 18px;
-    }
-
-    .roi-green {
-        font-weight: bold;
-        color: #007bff; /* Blue */
-        font-size: 18px;
-    }
-
-    #results {
-        background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        text-align: center;
-    }
-
-    #calculate {
-        background-color: #28a745;
-        color: white;
-        font-size: 16px;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    #calculate:hover {
-        background-color: #218838;
-    }
-</style>
-
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             background-color: #f4f4f4;
-            margin: 20px;
+            text-align: center;
+            padding: 20px;
         }
         .container {
-            width: 80%;
-            max-width: 400px;
-            margin: auto;
             background: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: auto;
         }
         h2 {
             color: #333;
         }
         input {
-            width: 80%;
+            width: 90%;
             padding: 10px;
+            font-size: 16px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
+            text-align: center;
         }
         button {
             background-color: #28a745;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            border-radius: 5px;
             font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
         }
         button:hover {
             background-color: #218838;
         }
-        .result {
-            font-size: 18px;
-            margin-top: 15px;
-            color: #333;
+        #results {
+            margin-top: 20px;
+            padding: 15px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .highlight {
             font-weight: bold;
+            color: #28a745; /* Green */
+            font-size: 18px;
+        }
+        .roi-green {
+            font-weight: bold;
+            color: #007bff; /* Blue */
+            font-size: 18px;
         }
     </style>
 </head>
@@ -93,12 +71,12 @@
         <label for="investment">Montant investi (€) :</label>
         <input type="number" id="investment" placeholder="Entrez un montant">
         <button id="calculate">Calculer</button>
-
-        <div class="result">
-            <p>📈 <strong>Résultats :</strong></p>
-            <p>Paiement Mensuel : <span id="monthlyPayout">0 €</span></p>
-            <p>Paiement Annuel : <span id="yearlyPayout">0 €</span></p>
-            <p>ROI Annuel : <span id="roiAnnual">0%</span></p>
+        
+        <div id="results" style="display: none;">
+            <h3>📉 Résultats :</h3>
+            <p>Paiement Mensuel : <span id="monthlyPayout" class="highlight"></span></p>
+            <p>Paiement Annuel : <span id="yearlyPayout" class="highlight"></span></p>
+            <p>ROI Annuel : <span id="roiAnnual" class="roi-green"></span></p>
         </div>
     </div>
 
