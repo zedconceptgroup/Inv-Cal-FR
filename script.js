@@ -1,45 +1,50 @@
 document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("calculate").addEventListener("click", function() {
-        let investment = parseFloat(document.getElementById("investment").value);
-
-        // Check if input is valid
-        if (isNaN(investment) || investment <= 0) {
+        let investmentAmount = parseFloat(document.getElementById("investment").value);
+        
+        if (isNaN(investmentAmount) || investmentAmount <= 0) {
             alert("Veuillez entrer un montant valide.");
             return;
         }
 
-        // Define ROI percentage range (minimum and maximum)
-        let roiMin = 0.43;  // 43% minimum ROI
-        let roiMax = 0.54;  // 54% maximum ROI
+        // Define ROI percentage ranges per investment tier
+        let roiRanges = [
+            { min: 43, max: 54, threshold: 5000 },
+            { min: 48, max: 60, threshold: 10000 },
+            { min: 48, max: 60, threshold: 25000 },
+            { min: 53, max: 66, threshold: 50000 },
+            { min: 58, max: 72, threshold: 100000 }
+        ];
 
-        // Calculate the monthly and yearly payouts for both min and max ROI
-        let monthlyPayoutMin = (investment * roiMin) / 12;
-        let monthlyPayoutMax = (investment * roiMax) / 12;
+        // Determine applicable ROI range
+        let selectedROI = roiRanges[roiRanges.length - 1]; // Default to highest tier
+        for (let i = 0; i < roiRanges.length; i++) {
+            if (investmentAmount <= roiRanges[i].threshold) {
+                selectedROI = roiRanges[i];
+                break;
+            }
+        }
 
-        let yearlyPayoutMin = investment * roiMin;
-        let yearlyPayoutMax = investment * roiMax;
+        // Calculate Payouts
+        let monthlyPayoutMin = ((selectedROI.min / 100) * investmentAmount) / 12;
+        let monthlyPayoutMax = ((selectedROI.max / 100) * investmentAmount) / 12;
+        let yearlyPayoutMin = (selectedROI.min / 100) * investmentAmount;
+        let yearlyPayoutMax = (selectedROI.max / 100) * investmentAmount;
 
-        let roiMinPercentage = (roiMin * 100).toFixed(2);
-        let roiMaxPercentage = (roiMax * 100).toFixed(2);
+        // Format numbers for better readability
+        let formatCurrency = (num) => num.toLocaleString("fr-FR", { style: "currency", currency: "EUR" });
 
-        // Display results
-        document.getElementById("monthlyPayout").textContent = 
-            `${monthlyPayoutMin.toFixed(2)} € - ${monthlyPayoutMax.toFixed(2)} €`;
-
-        document.getElementById("yearlyPayout").textContent = 
-            `${yearlyPayoutMin.toFixed(2)} € - ${yearlyPayoutMax.toFixed(2)} €`;
-
-        document.getElementById("roiAnnual").textContent = 
-            `${roiMinPercentage}% - ${roiMaxPercentage}%`;
-        // Ensure investment amount is valid
-if (investmentAmount > 0) {
-    let roiAnnualMin = ((yearlyPayoutMin / investmentAmount) * 100).toFixed(2);
-    let roiAnnualMax = ((yearlyPayoutMax / investmentAmount) * 100).toFixed(2);
-    
-    document.getElementById("roiAnnual").textContent = `${roiAnnualMin}% - ${roiAnnualMax}%`;
-} else {
-    document.getElementById("roiAnnual").textContent = "0%";
-}
-
+        // Update UI with results
+        document.getElementById("monthlyPayout").innerHTML = 
+            `<span class="highlight">${formatCurrency(monthlyPayoutMin)}</span> - 
+            <span class="highlight">${formatCurrency(monthlyPayoutMax)}</span>`;
+            
+        document.getElementById("yearlyPayout").innerHTML = 
+            `<span class="highlight">${formatCurrency(yearlyPayoutMin)}</span> - 
+            <span class="highlight">${formatCurrency(yearlyPayoutMax)}</span>`;
+        
+        document.getElementById("roiAnnual").innerHTML = 
+            `<span class="roi-green">${selectedROI.min}%</span> - 
+            <span class="roi-green">${selectedROI.max}%</span>`;
     });
 });
