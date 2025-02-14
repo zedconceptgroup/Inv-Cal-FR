@@ -10,11 +10,23 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Check input validity and enable/disable button
+    investmentInput.addEventListener("input", function () {
+        let investmentAmount = parseFloat(investmentInput.value);
+
+        if (investmentAmount < 5000 || isNaN(investmentAmount)) {
+            investmentInput.classList.add("input-error");
+            calculateButton.disabled = true;
+        } else {
+            investmentInput.classList.remove("input-error");
+            calculateButton.disabled = false;
+        }
+    });
+
     function calculatePayouts() {
         let investmentAmount = parseFloat(investmentInput.value);
 
-        if (isNaN(investmentAmount) || investmentAmount < 5000) {
-            alert("Veuillez entrer un montant valide (minimum 5000 €).");
+        if (investmentAmount < 5000 || isNaN(investmentAmount)) {
             return;
         }
 
