@@ -46,5 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("roiAnnual").innerHTML = 
             `<span class="roi-green">${selectedROI.min}%</span> - 
             <span class="roi-green">${selectedROI.max}%</span>`;
+
+        // Show results section
+        document.getElementById("results").style.display = "block";
     });
 });
