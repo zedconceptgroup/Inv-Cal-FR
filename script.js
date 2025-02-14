@@ -1,7 +1,18 @@
-document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("calculate").addEventListener("click", function() {
-        let investmentAmount = parseFloat(document.getElementById("investment").value);
-        
+document.addEventListener("DOMContentLoaded", function () {
+    const investmentInput = document.getElementById("investment");
+    const calculateButton = document.getElementById("calculate");
+
+    // Set default investment amount on focus
+    investmentInput.addEventListener("focus", function() {
+        if (investmentInput.value === "") {
+            investmentInput.value = 15000;
+            investmentInput.style.color = "#000"; // Change text color when user types
+        }
+    });
+
+    function calculatePayouts() {
+        let investmentAmount = parseFloat(investmentInput.value);
+
         if (isNaN(investmentAmount) || investmentAmount < 5000) {
             alert("Veuillez entrer un montant valide (minimum 5000 €).");
             return;
@@ -49,5 +60,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Show results section
         document.getElementById("results").style.display = "block";
-    });
+    }
+
+    // Trigger calculation when page loads
+    calculatePayouts();
+
+    // Trigger calculation on button click
+    calculateButton.addEventListener("click", calculatePayouts);
 });
