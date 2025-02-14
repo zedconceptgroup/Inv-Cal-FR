@@ -31,5 +31,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
         document.getElementById("roiAnnual").textContent = 
             `${roiMinPercentage}% - ${roiMaxPercentage}%`;
+        // Ensure investment amount is valid
+if (investmentAmount > 0) {
+    let roiAnnualMin = ((yearlyPayoutMin / investmentAmount) * 100).toFixed(2);
+    let roiAnnualMax = ((yearlyPayoutMax / investmentAmount) * 100).toFixed(2);
+    
+    document.getElementById("roiAnnual").textContent = `${roiAnnualMin}% - ${roiAnnualMax}%`;
+} else {
+    document.getElementById("roiAnnual").textContent = "0%";
+}
+
     });
 });
