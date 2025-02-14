@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("calculate").addEventListener("click", function() {
         let investmentAmount = parseFloat(document.getElementById("investment").value);
         
-        if (isNaN(investmentAmount) || investmentAmount <= 0) {
-            alert("Veuillez entrer un montant valide.");
+        if (isNaN(investmentAmount) || investmentAmount < 5000) {
+            alert("Veuillez entrer un montant valide (minimum 5000 €).");
             return;
         }
 
